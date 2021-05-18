@@ -35,7 +35,7 @@ const SignUpPage = () => {
   return (
     <Page>
       <Navbar title="회원가입" backLink sliding={false} />
-      <p className="font-semibole text-4xl text-center mt-5">insomenia</p>
+      <p className="font-semibole text-4xl text-center mt-5">Sam's Choice</p>
       <Formik
         initialValues={initialValues}
         validationSchema={SignUpSchema}

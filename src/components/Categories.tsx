@@ -38,14 +38,12 @@ const Categories = () => {
               className="bg-white h-20 flex flex-col items-center justify-center"
               key={category.id}
             >
-              <img src={API_URL + category.image_path} alt="#" className="w-14 h-14 rounded-lg shadow-sm" />
+              <img src={category.image_path} alt="#" className="w-14 h-14 rounded-lg shadow-sm" />
               <span className="text-gray-500 mt-1">{category.title}</span>
             </Link>
           ) : (
             <Link href="#" className="bg-white h-20 flex flex-col items-center justify-center" key={i}>
-              <SkeletonBlock slot="media" className="w-14 h-14 rounded-lg shadow-sm" effect="fade" />
               <span className="text-gray-500 mt-1">
-                <SkeletonText>---</SkeletonText>
               </span>
             </Link>
           )}
