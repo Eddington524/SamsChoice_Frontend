@@ -46,8 +46,7 @@ const F7Views = () => {
       <Toolbar tabbar labels bottom>
         <Link tabLink="#view-home" tabLinkActive icon="las la-home" text="홈" />
         <Link tabLink="#view-items" icon="las la-gift" text="쇼핑" />
-        <Link tabLink="#view-users" icon="las la-address-book" text="사용자" />
-        <Link tabLink="#view-contacts" icon="las la-edit" text="문의하기" />
+        <Link tabLink="#view-users" iconF7="search" text="검색" />
         <Link tabLink="#view-mypage" icon="las la-user" text="마이페이지" />
       </Toolbar>
       <View id="view-home" stackPages main tab tabActive url="/" iosDynamicNavbar={false} />

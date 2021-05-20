@@ -43,7 +43,7 @@ const Categories = () => {
             </Link>
           ) : (
             <Link href="#" className="bg-white h-20 flex flex-col items-center justify-center" key={i}>
-              <span className="text-gray-500 mt-1">
+              <span className="text-black-500 mt-1">
               </span>
             </Link>
           )}
