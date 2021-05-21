@@ -1,4 +1,5 @@
 import { API_URL, getCategory, getItems } from '@api';
+import Items from '@components/Items';
 import { Item } from '@constants';
 import { currency } from '@js/utils';
 import { useFormik } from 'formik';
@@ -34,6 +35,13 @@ const ItemIndexPage = ({ f7route }) => {
   const [category, setCategory] = useState(null);
 
   const [items, setItems] = useState([]);
+  useEffect(() => {
+    (async () => {
+        const { data } = await getItems({ q: { s: ['name asc'] } });
+        setItems(data);
+    })();
+}, []);
+
   const [totalCount, setTotalCount] = useState(0);
   useEffect(() => {
     // then을 사용
@@ -42,11 +50,6 @@ const ItemIndexPage = ({ f7route }) => {
         setCategory(resp.data);
       });
     }
-    // async await 을 사용
-    (async () => {
-      const { data } = await getItems();
-      setItems(data.items);
-    })();
   }, []);
 
   const filterForm = useFormik<ItemFilterProps>({
@@ -72,7 +75,8 @@ const ItemIndexPage = ({ f7route }) => {
     // await refetch();
     done();
   };
-
+  
+  console.log("아이템:",items)
   return (
     <Page noToolbar={!is_main} onPtrRefresh={onRefresh} ptr>
       <Navbar backLink={!is_main}>
@@ -115,6 +119,7 @@ const ItemIndexPage = ({ f7route }) => {
           ))}
         </ListInput>
       </form>
+    
       <List noHairlines className="mt-0 text-sm font-thin ">
         {items && (
           <ul>
@@ -126,10 +131,10 @@ const ItemIndexPage = ({ f7route }) => {
                       mediaItem
                       link={`/items/${item.id}`}
                       title={`${item.id}-${item.name}`}
-                      subtitle={`${currency(item.sale_price)}원`}
+                      subtitle={`${currency(item.price)}원`}
                       className="w-full"
                     >
-                      <img slot="media" src={API_URL + item.image_path} className="w-20 rounded" alt="" />
+                      <img slot="media" src={item.image[0]} className="w-20 rounded" alt="" />
                     </ListItem>
                   </React.Fragment>
                 ))
@@ -139,16 +144,16 @@ const ItemIndexPage = ({ f7route }) => {
                       <ListItem
                         mediaItem
                         link={`/items/${item.id}`}
-                        title={`${item.id}-${item.name}`}
-                        subtitle={`${currency(item.sale_price)}원`}
+                        title={`${item.name}`}
+                        subtitle={`${currency(Number(item.price))}원`}
                         header={category_id ? category?.title : ''}
                         className="w-full"
                       >
                         <img
                           slot="media"
                           alt=""
-                          src={API_URL + item.image_path}
-                          className="w-40 m-auto radius rounded shadow"
+                          src={item.image[0]}
+                          className="w-40 h-40 m-auto radius rounded shadow"
                         />
                       </ListItem>
                     </div>

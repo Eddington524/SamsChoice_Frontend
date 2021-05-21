@@ -14,7 +14,7 @@ const Items = () => {
     }, []);
 
     return (
-        <div className="mt-3 grid grid-cols-2 gap-1">
+        <div className="m-3 grid grid-cols-2 gap-1">
             {items.map((item: Item, i) => (
                 <div key={item.id}>{
                     items.length ? (

@@ -5,6 +5,7 @@ import ItemIndexPage from '@pages/items';
 import MyPage from '@pages/mypage';
 import SignUpPage from '@pages/users/registrations/new';
 import LoginPage from '@pages/users/sessions/new';
+import ItemShowPage from '@pages/items/show';
 
 const routes = [
   { path: '/', component: HomePage },
@@ -13,6 +14,7 @@ const routes = [
   { path: '/intro', component: IntroPage },
   { path: '/mypage', component: MyPage },
   { path: '/items', component: ItemIndexPage },
+  { path : '/items/:id', component: ItemShowPage },
   { path: '(.*)', component: NotFoundPage },
 ];
 
