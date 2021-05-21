@@ -76,7 +76,7 @@ const ItemIndexPage = ({ f7route }) => {
     done();
   };
   
-  console.log("아이템:",items)
+  // console.log("아이템:",items)
   return (
     <Page noToolbar={!is_main} onPtrRefresh={onRefresh} ptr>
       <Navbar backLink={!is_main}>
