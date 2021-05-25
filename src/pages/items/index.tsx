@@ -1,5 +1,4 @@
 import { API_URL, getCategory, getItems } from '@api';
-import Items from '@components/Items';
 import { Item } from '@constants';
 import { currency } from '@js/utils';
 import { useFormik } from 'formik';

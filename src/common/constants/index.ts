@@ -72,6 +72,7 @@ export interface Image extends DefaultProps {
   imagable_type: string;
   imagable_id: number;
   image_path: string;
+  image: string[];
 }
 
 export interface Item extends DefaultProps {
@@ -82,7 +83,7 @@ export interface Item extends DefaultProps {
   status: 'active' | 'disabled';
   sale_price: number;
   description: string;
-  image: string;
+  image: string[];
   category?: Category;
   images?: Image[];
   user?: User;

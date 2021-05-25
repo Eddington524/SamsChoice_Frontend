@@ -2,10 +2,13 @@ import NotFoundPage from '@pages/404';
 import HomePage from '@pages/home';
 import IntroPage from '@pages/intro';
 import ItemIndexPage from '@pages/items';
+import ItemShowPage from '@pages/items/show';
 import MyPage from '@pages/mypage';
 import SignUpPage from '@pages/users/registrations/new';
 import LoginPage from '@pages/users/sessions/new';
-import ItemShowPage from '@pages/items/show';
+import PostIndexPage from '@pages/posts';
+import PostShowPage from '@pages/posts/show';
+import CategoryItemIndexPage from '@components/categoryitem';
 
 const routes = [
   { path: '/', component: HomePage },
@@ -15,6 +18,9 @@ const routes = [
   { path: '/mypage', component: MyPage },
   { path: '/items', component: ItemIndexPage },
   { path : '/items/:id', component: ItemShowPage },
+  { path : '/items/category/:id', component: CategoryItemIndexPage },
+  { path : '/posts', component: PostIndexPage },
+  { path : '/posts/:id', component: PostShowPage },
   { path: '(.*)', component: NotFoundPage },
 ];
 
