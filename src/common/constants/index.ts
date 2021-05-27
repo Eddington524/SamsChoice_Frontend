@@ -75,6 +75,11 @@ export interface Image extends DefaultProps {
   image: string[];
 }
 
+export interface Option extends DefaultProps{
+  item_id: number;
+  name: string;
+}
+
 export interface Item extends DefaultProps {
   user_id: number;
   category_id: number;
@@ -87,4 +92,5 @@ export interface Item extends DefaultProps {
   category?: Category;
   images?: Image[];
   user?: User;
+  options: Option; 
 }
