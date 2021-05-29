@@ -3,65 +3,10 @@ import { sampleSize, zip } from 'lodash';
 import React, { useEffect, useState } from 'react';
 import sanitizeHtml from '../js/utils/sanitizeHtml';
 
-const IntroPage = (props) => {
-  const [slides, setSlides] = useState([]);
-  const images: string[] = [
-    'couple',
-    'segment',
-    'chilling',
-    'choose',
-    'chatting',
-    'confirmed',
-    'agreement',
-    'grades',
-    'brainstorming',
-    'hiring',
-    'love',
-    'messages1',
-    'development',
-    'team',
-    'together',
-    'space',
-    'mobile',
-    'website',
-    'easter',
-    'romantic',
-    'tasting',
-    'drone',
-    'coding',
-    'mindfulness',
-    'artificial',
-    'celebration',
-    'virtual',
-    'doggy',
-    'static',
-    'healthy',
-    'data',
-    'sleep',
-    'force',
-    'makeup',
-    'bicycle',
-    'podcast',
-    'fishing',
-    'credit',
-    'workout',
-    'pilates',
-    'group',
-    'mouth',
-    'school',
-  ];
-
-  useEffect(() => {
-    f7ready(async (f7) => {
-      setSlides(
-        zip(sampleSize(images, 3), ['인썸니아의 사전<br/> 신입 교육용 앱입니다.', '여러분 파이팅!', '도큐 잘보세요!']),
-      );
-    });
-  }, []);
-
+const IntroPage = props => {
   return (
     <Page>
-      <Navbar className="hidden" />
+      <Navbar title="SAM'S CHOICE" />
       <Toolbar bottom className="p-0" inner={false}>
         <div className="w-full flex">
           <Button className="w-full rounded-none" large href="/users/sign_in">
@@ -80,15 +25,30 @@ const IntroPage = (props) => {
         pagination={{ clickable: true }}
         observer
       >
-        {slides.map((item, i) => (
-          <SwiperSlide key={i}>
-            <div className="flex justify-center p-0 ">
-              <img src={`https://insomenia.com/svgs/${item[0]}`} alt="" />
-            </div>
-
-            {sanitizeHtml(item[1], { className: 'text-lg text-center pt-4' })}
-          </SwiperSlide>
-        ))}
+        <SwiperSlide>
+          <div className="flex justify-center p-0 ">
+            <img
+              src={`https://images.unsplash.com/photo-1527061011665-3652c757a4d4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=633&q=80`}
+              alt=""
+            />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="flex justify-center p-0 ">
+            <img
+              src={`https://images.unsplash.com/photo-1509423350716-97f9360b4e09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80`}
+              alt=""
+            />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="flex justify-center p-0 ">
+            <img
+              src={`https://images.unsplash.com/photo-1500994802273-2dd2df834939?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=662&q=80`}
+              alt=""
+            />
+          </div>
+        </SwiperSlide>
       </Swiper>
     </Page>
   );

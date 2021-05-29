@@ -3,6 +3,7 @@ import HomePage from '@pages/home';
 import IntroPage from '@pages/intro';
 import ItemIndexPage from '@pages/items';
 import ItemShowPage from '@pages/items/show';
+import CartIndexPage from '@pages/cart/index';
 import MyPage from '@pages/mypage';
 import SignUpPage from '@pages/users/registrations/new';
 import LoginPage from '@pages/users/sessions/new';
@@ -17,10 +18,11 @@ const routes = [
   { path: '/intro', component: IntroPage },
   { path: '/mypage', component: MyPage },
   { path: '/items', component: ItemIndexPage },
-  { path : '/items/:id', component: ItemShowPage },
-  { path : '/items/category/:id', component: CategoryItemIndexPage },
-  { path : '/posts', component: PostIndexPage },
-  { path : '/posts/:id', component: PostShowPage },
+  { path: '/items/:id', component: ItemShowPage },
+  { path: '/items/category/:id', component: CategoryItemIndexPage },
+  { path: '/cart', component: CartIndexPage },
+  { path: '/posts', component: PostIndexPage },
+  { path: '/posts/:id', component: PostShowPage },
   { path: '(.*)', component: NotFoundPage },
 ];
 

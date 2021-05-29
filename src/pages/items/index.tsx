@@ -77,7 +77,7 @@ const ItemIndexPage = ({ f7route }) => {
   
   // console.log("아이템:",items)
   return (
-    <Page noToolbar={!is_main} onPtrRefresh={onRefresh} ptr>
+    <Page onPtrRefresh={onRefresh} ptr>
       <Navbar backLink={!is_main}>
         <NavTitle>{(category && category.title) || '쇼핑'}</NavTitle>
         <NavRight>
@@ -133,7 +133,7 @@ const ItemIndexPage = ({ f7route }) => {
                       subtitle={`${currency(item.price)}원`}
                       className="w-full"
                     >
-                      <img slot="media" src={item.image[0]} className="w-20 rounded" alt="" />
+                      <img slot="media" src={item.image[0]} className="w-20 rounded" alt="상품 준비중입니다" />
                     </ListItem>
                   </React.Fragment>
                 ))

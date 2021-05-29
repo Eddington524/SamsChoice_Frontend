@@ -7,6 +7,8 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:jsx-a11y/recommended',
+    'react-app',
+    'plugin:prettier/recommended',
   ],
   globals: {
     i18next: true,
@@ -80,4 +82,4 @@ module.exports = {
     browser: true,
     node: true,
   },
-};
+}
