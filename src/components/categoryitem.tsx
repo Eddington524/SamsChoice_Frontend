@@ -13,10 +13,11 @@ const CategoryItemIndexPage = ({ f7route, f7router }: PageRouteProps) => {
       setLists(data);
     })();
   }, []);
+  console.log('리스트', lists);
 
   return (
-    <Page noToolbar>
-      <Navbar title="상품상세" backLink={true}></Navbar>
+    <Page>
+      <Navbar title={'상품리스트'} backLink={true}></Navbar>
       <List noHairlines className="mt-0 text-sm font-thin">
         {lists && (
           <ul>

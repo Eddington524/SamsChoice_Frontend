@@ -36,16 +36,16 @@ const ItemIndexPage = ({ f7route }) => {
   const [items, setItems] = useState([]);
   useEffect(() => {
     (async () => {
-        const { data } = await getItems({ q: { s: ['name asc'] } });
-        setItems(data);
+      const { data } = await getItems({ q: { s: ['name asc'] } });
+      setItems(data);
     })();
-}, []);
+  }, []);
 
   const [totalCount, setTotalCount] = useState(0);
   useEffect(() => {
     // then을 사용
     if (category_id) {
-      getCategory(category_id).then((resp) => {
+      getCategory(category_id).then(resp => {
         setCategory(resp.data);
       });
     }
@@ -69,31 +69,30 @@ const ItemIndexPage = ({ f7route }) => {
   //   }),
   // );
 
-  const onRefresh = async (done) => {
+  const onRefresh = async done => {
     // await queryClient.removeQueries(ITEM_KEY);
     // await refetch();
     done();
   };
-  
-  // console.log("아이템:",items)
+
   return (
     <Page onPtrRefresh={onRefresh} ptr>
       <Navbar backLink={!is_main}>
         <NavTitle>{(category && category.title) || '쇼핑'}</NavTitle>
         <NavRight>
-          <Link href="/line_items" iconF7="cart" iconBadge={3} badgeColor="red" />
+          <Link href="/cart" iconF7="cart" iconBadge={3} badgeColor="red" />
         </NavRight>
       </Navbar>
 
       <form onSubmit={filterForm.handleSubmit} className="item-list-form p-3 table w-full border-b">
         <div className="float-left">
-          총 <b>{currency((items && totalCount) || 0)}</b>개 상품
+          총 <b>{items.length}</b>개 상품
         </div>
         <ListInput
           type="select"
           className="float-right inline-flex items-center px-2.5 py-3 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           name="s"
-          onChange={(e) => {
+          onChange={e => {
             filterForm.handleChange(e);
             filterForm.submitForm();
           }}
@@ -109,7 +108,7 @@ const ItemIndexPage = ({ f7route }) => {
           type="select"
           defaultValue="grid"
           className="float-right inline-flex items-center px-2.5 py-3 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mr-2"
-          onChange={(e) => setViewType(e.target.value)}
+          onChange={e => setViewType(e.target.value)}
         >
           {map(i18n.t('ui'), (v, k) => (
             <option value={k} key={k}>
@@ -118,7 +117,7 @@ const ItemIndexPage = ({ f7route }) => {
           ))}
         </ListInput>
       </form>
-    
+
       <List noHairlines className="mt-0 text-sm font-thin ">
         {items && (
           <ul>
@@ -130,7 +129,7 @@ const ItemIndexPage = ({ f7route }) => {
                       mediaItem
                       link={`/items/${item.id}`}
                       title={`${item.id}-${item.name}`}
-                      subtitle={`${currency(item.price)}원`}
+                      subtitle={`${currency(Number(item.price))}원`}
                       className="w-full"
                     >
                       <img slot="media" src={item.image[0]} className="w-20 rounded" alt="상품 준비중입니다" />
@@ -152,7 +151,7 @@ const ItemIndexPage = ({ f7route }) => {
                           slot="media"
                           alt=""
                           src={item.image[0]}
-                          className="w-40 h-40 m-auto radius rounded shadow"
+                          className="w-40 h-40 m-auto radius rounded shadow verflow-hidden"
                         />
                       </ListItem>
                     </div>
