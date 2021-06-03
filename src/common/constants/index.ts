@@ -67,7 +67,6 @@ export interface Category extends DefaultProps {
   image_path: string;
 }
 
-
 export interface Image extends DefaultProps {
   imagable_type: string;
   imagable_id: number;
@@ -75,7 +74,7 @@ export interface Image extends DefaultProps {
   image: string[];
 }
 
-export interface Option extends DefaultProps{
+export interface Option extends DefaultProps {
   item_id: number;
   name: string;
 }
@@ -92,5 +91,11 @@ export interface Item extends DefaultProps {
   category?: Category;
   images?: Image[];
   user?: User;
-  options: Option; 
+  options: Option;
+}
+
+export interface LineItem extends DefaultProps {
+  option_id: number;
+  quantity: number;
+  total_price: number;
 }

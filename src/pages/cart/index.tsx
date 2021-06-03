@@ -1,9 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useRecoilState } from 'recoil';
 import { Page, Navbar, List, ListItem, Checkbox, Button, Col, Stepper } from 'framework7-react';
 import { PageRouteProps } from '@constants';
-import { getPosts } from '@api';
+import { getLineItems } from '@api';
+import { lineItemState } from '../../common/atoms/index';
+import { currency } from '@js/utils';
 
 const CartIndexPage = ({ f7route, f7router }: PageRouteProps) => {
+  const [lineItem, setLineItem] = useRecoilState(lineItemState);
+
+  useEffect(() => {
+    (async () => {
+      const { data } = await getLineItems();
+      setLineItem(data);
+    })();
+  }, []);
+
   return (
     <Page noToolbar className="bg-gray-100">
       <Navbar title="장바구니" backLink={true}></Navbar>
@@ -20,7 +32,7 @@ const CartIndexPage = ({ f7route, f7router }: PageRouteProps) => {
               <span>마지막 봄 에디션</span>
               <i className="f7-icons text-base">xmark</i>
             </div>
-            <span className="text-xl">37,900원</span>
+            <span className="text-xl"></span>
             <span>
               <Stepper raised round />
             </span>
@@ -40,7 +52,7 @@ const CartIndexPage = ({ f7route, f7router }: PageRouteProps) => {
             </li>
           </ul>
           <div className="flex justify-end px-5 py-2">
-            <span>합계금액 &nbsp;&nbsp;71,300원</span>
+            <span>합계금액 &nbsp;&nbsp;{currency(lineItem[0]?.total_price)}</span>
           </div>
         </List>
       </div>
@@ -48,7 +60,7 @@ const CartIndexPage = ({ f7route, f7router }: PageRouteProps) => {
         <div>
           <div className="w-full px-5 py-3 flex justify-between">
             <span>총 주문금액</span>
-            <span>71,300원</span>
+            <span>{currency(lineItem[0]?.total_price)}</span>
           </div>
           <div className="w-full px-5 py-3 flex justify-between border-b-2">
             <span>배송비</span>
@@ -57,7 +69,7 @@ const CartIndexPage = ({ f7route, f7router }: PageRouteProps) => {
         </div>
         <div className="w-full px-5 pb-5 pt-3 flex justify-between text-xl">
           <span>총 결제금액</span>
-          <span>71,300원</span>
+          <span>{currency(lineItem[0]?.total_price)}</span>
         </div>
         <Button className="mx-5" large fill color="green">
           구매하기

@@ -20,7 +20,7 @@ const routes = [
   { path: '/items', component: ItemIndexPage },
   { path: '/items/:id', component: ItemShowPage },
   { path: '/items/category/:id', component: CategoryItemIndexPage },
-  { path: '/cart', component: CartIndexPage },
+  { path: '/line_items', component: CartIndexPage },
   { path: '/posts', component: PostIndexPage },
   { path: '/posts/:id', component: PostShowPage },
   { path: '(.*)', component: NotFoundPage },

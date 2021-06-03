@@ -80,7 +80,7 @@ const ItemIndexPage = ({ f7route }) => {
       <Navbar backLink={!is_main}>
         <NavTitle>{(category && category.title) || '쇼핑'}</NavTitle>
         <NavRight>
-          <Link href="/cart" iconF7="cart" iconBadge={3} badgeColor="red" />
+          <Link href="/line_items" iconF7="cart" iconBadge={3} badgeColor="red" />
         </NavRight>
       </Navbar>
 

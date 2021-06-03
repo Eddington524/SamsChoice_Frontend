@@ -13,7 +13,7 @@ import {
   ListItem,
   Link,
 } from 'framework7-react';
-
+import { getItemFromCategory } from '@api';
 import { PageRouteProps } from '@constants';
 import { getItem } from '@api';
 import { currency } from '@js/utils';
@@ -21,7 +21,7 @@ import items from '.';
 
 const ItemShowPage = ({ f7route, f7router }: PageRouteProps) => {
   const [item, setItem] = useState(null);
-  const [categoryId, setCategoryId] = useState(0);
+  const [categoryTitle, setCategoryTitle] = useState('');
   const [quentity, setQuentity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
   const [isCheckOptions, setCheckOptions] = useState({ vase: true, letter: false });
@@ -30,8 +30,8 @@ const ItemShowPage = ({ f7route, f7router }: PageRouteProps) => {
     (async () => {
       const { data } = await getItem(f7route.params.id);
       setItem(data);
-      console.log(data);
-      setCategoryId(data.category_id);
+      const { data: categoryData } = await getItemFromCategory(data.category_id);
+      setCategoryTitle(categoryData.category_data[0].title);
       setTotalPrice(data.price);
     })();
   }, []);
@@ -55,7 +55,7 @@ const ItemShowPage = ({ f7route, f7router }: PageRouteProps) => {
   return (
     <Page>
       <Navbar title="상품상세" backLink={true}></Navbar>
-      {categoryId % 2 === 1 ? (
+      {categoryTitle === '정기구독' || categoryTitle === '클래스' ? (
         <img src={item?.image[0]} className=" w-full h-2/3" alt="" />
       ) : (
         <Swiper pagination navigation scrollbar className="h-2/3">

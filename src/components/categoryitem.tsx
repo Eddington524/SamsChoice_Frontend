@@ -10,10 +10,10 @@ const CategoryItemIndexPage = ({ f7route, f7router }: PageRouteProps) => {
   useEffect(() => {
     (async () => {
       const { data } = await getItemFromCategory(f7route.params.id);
-      setLists(data);
+      setLists(data.category_items);
+      console.log('리스트', data);
     })();
   }, []);
-  console.log('리스트', lists);
 
   return (
     <Page>
